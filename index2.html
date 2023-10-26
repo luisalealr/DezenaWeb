@@ -3,89 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!--- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Boxicons CSS -->
     <link
-            rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    /> <!--Para iconos-->
-    <link rel="stylesheet" href="css/estilos.css">
+    rel="stylesheet"
+    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="shortcut icon" href="recursos/icono.png">
     <title>DEZENA | WebPage</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-bar">
+                <i class="bx bx-menu sidebarOpen"></i>
+                <img class="img__menus" src="recursos/icono-nav.jpeg" alt="">
     
-    <header class="header">
-        <img class="img__menu" src="recursos/icono-nav.jpeg" alt="">
-        <nav class="navigation">
-            <ul>
-                <li><a href="#">HOMBRE</a>
-                    <ul>
-                        <li><a href="#">Billeteras</a></li>
-                        <li><a href="#">Correas</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">MUJER</a>
-                    <ul>
-                        <li><a href="#">Billeteras</a></li>
-                        <li><a href="#">Correas</a></li>
-                        <li><a href="#">Bolsos</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">OUTLET</a></li>
-                <li><a href="#">NOVEDADES</a></li>    
-            </ul>
-        </nav>
-        <input type="text" class="busqueda">
-        <i class="uil uil-search"></i>
-    </header>
-    <div class="slider">
-        <div class="slides">
-            <!----radio buttons start-->
-            <input type="radio" name="radio-btn" id="radio1">
-            <input type="radio" name="radio-btn" id="radio2">
-            <input type="radio" name="radio-btn" id="radio3">
-            <input type="radio" name="radio-btn" id="radio4">
-            
-            <!----slide images start-->
-            <div class="slide first">
-                <img src="recursos/slider-1.jpg" alt="">
-            </div>
-            <div class="slide">
-                <img src="recursos/slider-1.jpg" alt="">
-            </div>
-            <div class="slide">
-                <img src="recursos/slider-1.jpg" alt="">
-            </div>
-            <div class="slide">
-                <img src="recursos/slider-1.jpg" alt="">
-            </div>
+                <div class="menu">
 
-            <!---automatic navigation-->
-            <div class="navigation-auto">
-                <div class="auto-btn1"></div>
-                <div class="auto-btn2"></div>
-                <div class="auto-btn3"></div>
-                <div class="auto-btn4"></div>
+                    <div class="logo-toggle">
+                        <img class="img__menu" src="recursos/icono-nav.jpeg" alt="">
+                        <i class="bx bx-x sidebarClose"></i>
+                    </div>
+
+                    <ul class="nav-links">
+                        <li><a href="#">HOMBRE</a></li>
+                        <li><a href="html/productosMujer.html">MUJER</a></li>
+                        <li><a href="#">OUTLET</a></li>
+                        <li><a href="#">NOVEDADES</a></li>
+                    </ul>
+                </div>
+
+                <div class="searchBox">
+                    <div class="searchBoxx">
+                        <div class="searchToggle">
+                            <i class='bx bx-x cancel'></i>
+                            <i class='bx bx-search search'></i>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" placeholder="Search...">
+                            <i class='bx bx-search'></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="navigation-manual">
-            <label for="radio1" class="manual-btn"></label>
-            <label for="radio2" class="manual-btn"></label>
-            <label for="radio3" class="manual-btn"></label>
-            <label for="radio4" class="manual-btn"></label>
-        </div>
-    </div>
-    <script type="text/javascript">
-        var counter = 1;
-        setInterval(function(){
-            document.getElementById('radio' + counter).checked = true;
-            counter++;
-            if (counter > 4){
-                counter = 1 
-            }
-        }, 5000);
-    </script>
+        </nav>
+        <main></main>
+    </header>
     <div class="mensaje">
         <h2>Tu estilo merece lo mejor y eso es lo que ofrecemos <br> en todos nuestros productos</h2>
     </div>
@@ -109,6 +74,68 @@
                 </div>
             </div>
         </div>
+        <!--Responsive-->
+        <div class="principal__product2">
+            <div class="conte">
+                <div class="card stor">
+                    <img src="recursos/vendidos-secundarios2.jpg">
+                </div>
+                <div class="informacion">
+                    <h1>CARTERA</h1>
+                </div>
+                <div class="precio">
+                    <div class="box-precio">
+                        <span class="precio2">$/35.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="principal__product2">
+            <div class="conte">
+                <div class="card stor">
+                    <img src="recursos/vendidos-secundarios1.jpg">
+                </div>
+                <div class="informacion">
+                    <h1>BOLSO ZAFIRO</h1>
+                </div>
+                <div class="precio">
+                    <div class="box-precio">
+                        <span class="precio2">$/35.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="principal__product2">
+            <div class="conte">
+                <div class="card stor">
+                    <img src="recursos/vendidos-secundarios3.jpg">
+                </div>
+                <div class="informacion">
+                    <h1>CARTERA</h1>
+                </div>
+                <div class="precio">
+                    <div class="box-precio">
+                        <span class="precio2">$/35.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="principal__product2">
+            <div class="conte">
+                <div class="card stor">
+                    <img src="recursos/vendidos-secundarios4.jpg">
+                </div>
+                <div class="informacion">
+                    <h1>BOLSO ELAINER</h1>
+                </div>
+                <div class="precio">
+                    <div class="box-precio">
+                        <span class="precio2">$/35.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------>
         <div class="secundary__products1">
             <div class="contes">
                 <div class="card stors">
@@ -200,7 +227,7 @@
             </div>
         </div>   
     </div>
-    
+    <!----Carrusel-->
     <div class="carousel">
         <br>
         <span class="novedades">NOVEDADES</span>
@@ -218,7 +245,7 @@
 
 
             <div class="carrusel-track" id="track">
-                <div class="contes2">
+                <div class="contes2 active">
                     <div class="card stors">
                         <img src="recursos/vendidos-secundarios5.jpg">
                     </div>
@@ -348,9 +375,10 @@
             </button>
         </div>
     </div>
-        <br><br><br><br>
+    <div class="mensaje">
+        <h2>Más sobre nosotros</h2>
+    </div>
     <div class="conocenos">
-        <span class="conocer">Más sobre Nosotros</span>
         <div class="ubicacion">
             <img src="recursos/ubicacion.jpg" alt="" class="sr">
         </div>
@@ -368,8 +396,7 @@
                 tu propio camino. 
                 Encuentra bolsos de marca en Colombia</h4>
         </div>
-    </div>
-
+    </div> 
     <footer class="pie_pagina">
         <div class="redes">
             <div class="logo-footer">
@@ -415,11 +442,11 @@
             <a class="option">Plataforma</a>
         </div>
     </div>
-    <script src="js/scrip.js"></script>
     <script>
         function redireccionar(url) {
             window.location.href = url;
         }
    </script>
+    <script src="js/scrip.js"></script>
 </body>
 </html>
