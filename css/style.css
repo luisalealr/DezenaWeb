@@ -772,3 +772,146 @@ main{
         width: 100%
     }
 }
+
+.inicio {
+    display: flex;
+    padding: 5%;
+    padding-top: 7%;
+}
+
+.inicio img {
+    min-width: 400px;
+    padding: 3%;
+    height: 500px;
+    width: 550px;
+    border-radius: 50%;
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left:5%;
+    width: 500px;
+    gap: 50px; /* Ajusta el espacio entre los botones según sea necesario */
+    padding-right: 5%;
+}
+
+.botones button{
+    width: 500px;
+    height: 50px;
+    background-color: red;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.botones button:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+.base {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.597) ;
+    padding: 10%;
+    justify-content: space-around;
+    color: #ffffff;
+    font-size: 20px;
+  }
+  
+.base input {
+    width: 120%;
+}
+  .derecha,
+  .izquierda {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  
+  .derecha label,
+  .izquierda label {
+    margin-bottom: 5px;
+  }
+  
+  .derecha input,
+  .izquierda input {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #646664;
+    color: white;
+    cursor: pointer;
+    height: 100%;
+    width: 120%;
+    font-size: 15px;
+  }
+  
+  button:hover {
+    background-color: #bc3333;
+  }
+
+  .baseReferencia{
+    background-image: url('/recursos/slider-1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .base2{
+    padding: 10%;
+    padding-top: 9%;
+  }
+
+  .todo{
+    padding-top: 5%;
+  }
+  .dentro{
+    padding: 2%;
+  }
+
+  .columna{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .imagen{
+    padding: 2%;
+  }
+
+  .tabla{
+    padding: 5%;
+    padding-right: 5%;
+  }
+  
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+      
+      th {
+        background-color: #000;
+        color: #fff;
+        padding: 15px;
+      }
+      
+      td {
+        border: 1px solid black;
+        padding: 20px;
+        text-align: center;
+    }
+        tr:nth-child(even) td {
+            background-color: rgb(184, 192, 195); /* Cambia el color de fondo para las filas pares */
+          } 
+          tr:nth-child(odd) td {
+            background-color: rgb(255, 255, 255); /* Cambia el color de fondo para las filas impares */
+          }
+
+.descripcionP{
+    font-size: 20px;
+}  
