@@ -774,46 +774,7 @@ main {
   }
 }
 
-/*
-.inicio {
-    display: flex;
-    padding: 5%;
-    padding-top: 7%;
-}
 
-.inicio img {
-    min-width: 400px;
-    padding: 3%;
-    height: 500px;
-    width: 550px;
-    border-radius: 50%;
-}
-
-.botones {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-left:5%;
-    width: 500px;
-    gap: 50px; 
-    padding-right: 5%;
-}
-
-.botones button{
-    width: 500px;
-    height: 50px;
-    background-color: red;
-    color: #ffffff;
-    font-size: 20px;
-}
-
-.botones button:hover {
-    background-color: #ffffff;
-    color: black;
-}
-
-*/
 
 .inicio {
   display: flex;
@@ -960,8 +921,7 @@ button:hover {
 }
 
 .tabla {
-  padding: 5%;
-  padding-right: 5%;
+  padding-right: 3%;
   max-width: 100%;
   overflow-x: auto;
 }
@@ -975,12 +935,11 @@ table {
 th {
   background-color: #000;
   color: #fff;
-  padding: 15px;
 }
 
 td {
   border: 1px solid black;
-  padding: 20px;
+  padding: 1%;
   text-align: center;
 }
 tr:nth-child(even) td {
