@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Administrador</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="shortcut icon" href="/recursos/icono.png" />
+    <style>
+      .navbar {
+        border-bottom: 2px solid #000;
+      }
+      .navbar-light .navbar-nav .nav-link {
+        font-weight: bold;
+        color: #000;
+      }
+      body {
+        background-image: url("/recursos/slider-1.jpg");
+        background-attachment: fixed;
+        background-position: center top;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .opaque-background {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px; /* Espacio entre el navbar y el contenedor */
+      }
+      .form-control {
+        margin-bottom: 10px; /* Espacio entre elementos del formulario */
+      }
+      .form-group label {
+        color: white;
+        font-weight: bold;
+      }
+      .btn.btn-primary {
+        background-color: #646464;
+        color: white;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand mr-4" href="#">
+        <img
+          src="/recursos/icono-nav.jpeg"
+          width="60"
+          height="30"
+          class="d-inline-block align-top img-fluid"
+          alt="Logo"
+        />
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul
+          class="navbar-nav w-100 justify-content-between d-flex align-items-center"
+        >
+          <li class="nav-item">
+            <a class="nav-link text-uppercase text-center" href="#">Reporte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase text-center" href="#"
+              >Producción</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase text-center" href="#">Pedidos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-uppercase"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Órdenes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Item 1</a>
+              <a class="dropdown-item" href="#">Item 2</a>
+            </div>
+          </li>
+          <div class="d-flex">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase" href="#">Administrador</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img
+                  src="/recursos/icono.png"
+                  width="30"
+                  class="d-inline-block align-top img-fluid"
+                  alt="Usuario"
+                />
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="opaque-background">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="nombre">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    placeholder="Ingrese nombre del taller"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="correo">Correo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="correo"
+                    placeholder="Ingrese correo del taller"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="direccion">Dirección</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="direccion"
+                    placeholder="Ingrese direccion del taller"
+                  />
+                </div>
+                <div
+                  class="form-group col-md-6 d-flex align-items-end justify-content-center"
+                >
+                  <button type="submit" class="btn btn-primary">
+                    Agregar taller
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
