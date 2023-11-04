@@ -4,10 +4,6 @@ var app = express();
 require("dotenv").config();
 
 async function run() {
-  app.listen(3306, function () {
-    console.log("Example app listening on port 3306!");
-  });
-
   var connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
