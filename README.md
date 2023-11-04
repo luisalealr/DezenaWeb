@@ -11,3 +11,13 @@ Ejecuta el siguiente comando en la terminal, estando en el directorio raíz del 
 ```bash
 npm install
 ```
+
+## Uso
+
+Para iniciar el proyecto en modo de desarrollo, utiliza el siguiente comando:
+
+```bash
+npm run dev
+```
+
+Esto iniciará el servidor y cualquier otra herramienta necesaria para el desarrollo. Abre tu navegador y ve a http://localhost:3000 para ver la aplicación en funcionamiento.
