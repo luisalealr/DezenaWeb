@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Administrador</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="shortcut icon" href="/recursos/icono.png" />
+    <style>
+      .navbar {
+        border-bottom: 2px solid #000;
+      }
+      .navbar-light .navbar-nav .nav-link {
+        font-weight: bold;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+
+    <%- include('./partials/administradorNavbar') %>
+    
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Solicitudes pendientes</h3>
+          <!-- Recuadro con lista y checkboxes -->
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <label>
+                    <input type="checkbox" value="item1" />
+                    Item 1
+                  </label>
+                </li>
+                <li class="list-group-item">
+                  <label>
+                    <input type="checkbox" value="item2" />
+                    Item 2
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Historial de Solicitudes</h3>
+          <!-- Tabla -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Columna 1</th>
+                <th>Columna 2</th>
+                <th>Columna 3</th>
+                <th>Columna 4</th>
+                <th>Columna 5</th>
+                <th>Columna 6</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dato 1</td>
+                <td>Dato 2</td>
+                <td>Dato 3</td>
+                <td>Dato 4</td>
+                <td>Dato 5</td>
+                <td>Dato 6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
