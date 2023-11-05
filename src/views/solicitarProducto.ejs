@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Administrador</title>
-    <link rel="stylesheet" href="../css/cuerpo.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/cuerpo.css" />
 </head>
 
 <body>
@@ -28,19 +28,29 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="satelite">Satélite</label>
-                                    <select id="opciones" name="opciones" placeholder="Elija el taller">
+                                    <select class="opcion" id="opciones" name="opciones">
                                     <% if (talleres) { %> 
                                         <% talleres.forEach(function(taller) { %>
-                                        <option value="<%=taller.id%>"><%= taller.nombre %></option>
+                                        <option class="opcion" value="<%=taller.id%>" ><%= taller.nombre %></option>
                                     <% }); %> 
                                     <% } %>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6 d-flex align-items-end justify-content-center">
-                                    <button type="submit" class="btn btn-primary">Solicitar Producto</button>
+                                <div class="form-group col-md-6">
+                                    <label for="satelite">Color</label>
+                                    <select class="opcion" id="opciones" name="opciones">
+                                    <% if (talleres) { %> 
+                                        <% talleres.forEach(function(taller) { %>
+                                        <option class="opcion" value="<%=taller.id%>" ><%= taller.nombre %></option>
+                                    <% }); %> 
+                                    <% } %>
+                                    </select>
                                 </div>
                             </div>
                         </form>
+                        <div class="contenedor-boton">
+                            <button type="button" class="btn btn-secondary">Solicitar Producto</button>
+                          </div>
                     </div>
                 </div>
             </div>
