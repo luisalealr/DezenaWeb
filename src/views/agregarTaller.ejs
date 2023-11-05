@@ -44,79 +44,9 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand mr-4" href="#">
-        <img
-          src="/recursos/icono-nav.jpeg"
-          width="60"
-          height="30"
-          class="d-inline-block align-top img-fluid"
-          alt="Logo"
-        />
-      </a>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul
-          class="navbar-nav w-100 justify-content-between d-flex align-items-center"
-        >
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-center" href="#">Reporte</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-center" href="#"
-              >Producción</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-center" href="#">Pedidos</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle text-uppercase"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Órdenes
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Item 1</a>
-              <a class="dropdown-item" href="#">Item 2</a>
-            </div>
-          </li>
-          <div class="d-flex">
-            <li class="nav-item">
-              <a class="nav-link text-uppercase" href="#">Administrador</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <img
-                  src="/recursos/icono.png"
-                  width="30"
-                  class="d-inline-block align-top img-fluid"
-                  alt="Usuario"
-                />
-              </a>
-            </li>
-          </div>
-        </ul>
-      </div>
-    </nav>
+    <%- include('./partials/administradorNavbar') %>
+    
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-10">
