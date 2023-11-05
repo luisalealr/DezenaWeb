@@ -54,14 +54,10 @@ const OrdenSolicitudController = {
       const ordenSolicitud = await OrdenSolicitud.findByPk(id);
       if (ordenSolicitud) {
         await ordenSolicitud.update(newData);
-        return res.json(ordenSolicitud);
-      } else {
-        return res
-          .status(404)
-          .json({ message: "Orden de solicitud no encontrada" });
-      }
+      } 
+      return res.redirect("/administrador/produccion");
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.redirect("/administrador/produccion");
     }
   },
 
