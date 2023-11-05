@@ -14,9 +14,7 @@ router.get("/agregarTaller", (req, res) => {
   res.render("agregarTaller");
 });
 
-router.get("/solicitarProducto", (req, res) => {
-  res.render("solicitarProducto");
-});
+router.get("/solicitarProducto", TallerController.getAllTalleres);
 
 router.post("/agregarTaller", TallerController.createTaller);
 
@@ -25,6 +23,5 @@ router.get(
   "/produccion",
   ProductoSolicitadoController.getAllProductosSolicitadosYOrdenes
 );
-
 
 export default router;

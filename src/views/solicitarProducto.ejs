@@ -29,10 +29,12 @@
                                 <div class="form-group col-md-6">
                                     <label for="satelite">Satélite</label>
                                     <select id="opciones" name="opciones" placeholder="Elija el taller">
-                                        <option value="opcion1">USD</option>
-                                        <option value="opcion2">COP</option>
-                                        <option value="opcion3">VEB</option>
-                                      </select>
+                                    <% if (talleres) { %> 
+                                        <% talleres.forEach(function(taller) { %>
+                                        <option value="<%=taller.id%>"><%= taller.nombre %></option>
+                                    <% }); %> 
+                                    <% } %>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6 d-flex align-items-end justify-content-center">
                                     <button type="submit" class="btn btn-primary">Solicitar Producto</button>

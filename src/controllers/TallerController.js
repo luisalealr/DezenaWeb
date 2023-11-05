@@ -2,13 +2,14 @@ import sequelize from "../config/database.js";
 import initModels from "../models/init-models.js";
 const models = initModels(sequelize);
 const Taller = models.taller;
+const OrdenEnvio = models.orden_envio;
 
 const TallerController = {
   // Obtener todos los talleres
   async getAllTalleres(req, res) {
     try {
       const talleres = await Taller.findAll();
-      return res.json(talleres);
+      return res.render("solicitarProducto", {talleres});
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
