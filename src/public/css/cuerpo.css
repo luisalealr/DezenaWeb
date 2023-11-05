@@ -1,0 +1,25 @@
+body {
+    background-image: url("/recursos/slider-1-opacity-56.jpg");
+    background-attachment: fixed;
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.opaque-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    /* Espacio entre el navbar y el contenedor */
+}
+
+.form-control {
+    margin-bottom: 10px;
+    /* Espacio entre elementos del formulario */
+}
+
+.form-group label {
+    color: white;
+    font-weight: bold;
+}

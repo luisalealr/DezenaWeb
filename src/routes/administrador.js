@@ -7,5 +7,7 @@ const router = Router();
 router.get("/agregarTaller", (req, res) => {
   res.render("agregarTaller");
 });
-
+router.get("/", (req, res) => {
+  res.render("header_admin");
+});
 export default router;
