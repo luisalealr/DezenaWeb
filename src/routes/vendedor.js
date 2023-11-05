@@ -7,5 +7,8 @@ const router = Router();
 router.get("/", (req, res) => {
   res.render("vendedor");
 });
+router.get("/registrarVenta", (req, res) => {
+  res.render("registrarVenta");
+});
 
 export default router;

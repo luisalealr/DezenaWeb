@@ -1,6 +1,13 @@
 /* ===== Google Font Import - Poppins ====== */
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Gabarito:wght@600&family=Poppins:wght@300;400;500;600&family=Satisfy&family=Tilt+Neon&display=swap");
 
+header {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 /*====Colores=====*/
 :root {
   --body-color: #e4e9f7;
@@ -9,6 +16,90 @@
   --text-color: #010718;
   --search-bar: #f2f2f2;
   --search-text: #010718;
+}
+
+/*----Menu de Navegacion-----*/
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  background-color: var(--nav-color);
+  z-index: 100;
+}
+
+nav .nav-bar {
+  position: relative;
+  height: 100%;
+  max-width: 1000px;
+  background-color: var(--nav-color);
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen {
+  color: var(--text-color);
+  font-size: 25px;
+  padding: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+nav .nav-bar .logo a {
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.menu .logo-toggle {
+  display: none;
+}
+
+.nav-bar .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar .nav-links li {
+  margin: 0 5px;
+  list-style: none;
+}
+
+.nav-links li a {
+  position: relative;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-bar li a::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(50%);
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-links li:hover a::before {
+  opacity: 1;
+}
+
+.nav-bar .searchBox {
+  display: flex;
+  align-items: center;
 }
 
 .searchBox .searchToggle {
@@ -64,7 +155,7 @@
   transition: all 0.3s ease;
 }
 
-.searchToggle.active ~ .search-field {
+.searchToggle.active~.search-field {
   bottom: -74px;
   opacity: 1;
   pointer-events: auto;
@@ -185,6 +276,7 @@
     display: block;
   }
 }
+
 /*Banner*/
 main {
   height: 100vh;
@@ -193,6 +285,7 @@ main {
   background-size: cover;
   background-position: center;
 }
+
 /*Mensaje*/
 .mensaje {
   height: 200px;
@@ -201,6 +294,7 @@ main {
   margin-top: 100px;
   letter-spacing: 2px;
 }
+
 /*Producto mas vendidos*/
 /*     PRODUCTS    */
 .productos__item {
@@ -214,6 +308,7 @@ main {
   margin-top: -100px;
   margin-left: 70px;
 }
+
 .principal__product2 {
   display: none;
   margin-top: -100px;
@@ -224,6 +319,7 @@ main {
   margin-left: 60px;
   font-family: "Poppins", sans-serif;
 }
+
 .conte {
   height: 400px;
   width: 300px;
@@ -231,25 +327,30 @@ main {
   margin-bottom: 170px;
   border-radius: 10px;
 }
+
 .conte .card {
   height: 200px;
   width: 100%;
   margin-bottom: 170px;
 }
+
 .card img {
   margin: auto;
   display: block;
 }
+
 .stor img {
   padding: 20px 0 0 0;
   height: 300px;
   width: 250px;
 }
+
 .informacion {
   margin-top: -35px;
   height: 80px;
   width: 100%;
 }
+
 .informacion h1 {
   font-family: sans-serif;
   font-size: 1.2em;
@@ -257,6 +358,7 @@ main {
   color: #333;
   margin-bottom: -10px;
 }
+
 .precio {
   height: 50px;
   width: 85%;
@@ -266,14 +368,17 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .box-precio {
   width: 80px;
   margin-top: -140px;
 }
+
 .precio2 {
   font-size: 0.9em;
   color: red;
 }
+
 /* PRODUCT SECUNDARY 1*/
 .secundary__products1 {
   margin-left: 500px;
@@ -288,24 +393,29 @@ main {
   border-radius: 10px;
   cursor: pointer;
 }
+
 .contes .card {
   height: 200px;
   width: 100%;
   margin-bottom: 170px;
 }
+
 .card img {
   margin: auto;
   display: block;
 }
+
 .stors img {
   padding: 12px 0 0 0;
   height: 200px;
   width: 170px;
 }
+
 .informacions {
   margin-top: -150px;
   height: 60px;
 }
+
 .informacions h1 {
   font-family: sans-serif;
   font-size: 0.9em;
@@ -313,6 +423,7 @@ main {
   color: #333;
   margin-bottom: -10px;
 }
+
 .precios {
   height: 30px;
   width: 85%;
@@ -321,23 +432,28 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .box-precios {
   width: 80px;
   margin-top: -100px;
 }
+
 .precio2s {
   font-size: 0.8em;
   color: white;
 }
+
 /* PRODUCT SECUNDARY 2*/
 .secundary__products2 {
   margin-left: 500px;
   margin-top: -150px;
 }
+
 .informacions2 {
   margin-top: -10x;
   height: 60px;
 }
+
 .informacions2 h1 {
   font-family: sans-serif;
   font-size: 0.9em;
@@ -345,6 +461,7 @@ main {
   color: #333;
   margin-bottom: -10px;
 }
+
 .precios2 {
   height: 30px;
   width: 85%;
@@ -353,14 +470,17 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .box-precios {
   width: 80px;
   margin-top: -100px;
 }
+
 .precio2s2 {
   font-size: 0.8em;
   color: red;
 }
+
 /* PRODUCT SECUNDARY 3*/
 .secundary__products3 {
   margin-left: 750px;
@@ -372,16 +492,19 @@ main {
   margin-left: 750px;
   margin-top: -150px;
 }
+
 /* PRODUCT SECUNDARY 5 */
 .secundary__products5 {
   margin-left: 1000px;
   margin-top: -710px;
 }
+
 /* PRODUCT SECUNDARY 6*/
 .secundary__products6 {
   margin-left: 1000px;
   margin-top: -150px;
 }
+
 /*Carrusel Novedades*/
 /*Carrusel*/
 .carousel {
@@ -391,6 +514,7 @@ main {
   background: red;
   margin-left: 140px;
 }
+
 .contes2 {
   height: 260px;
   width: 200px;
@@ -399,6 +523,7 @@ main {
   cursor: pointer;
   margin-right: 50px;
 }
+
 .novedades {
   font-family: "Poppins", sans-serif;
   margin-left: 800px;
@@ -481,6 +606,7 @@ main {
 .carrusel-arrow:focus {
   outline: 0;
 }
+
 .carrusel-arrow svg {
   width: 12px;
   height: 100%;
@@ -509,12 +635,14 @@ main {
     margin-left: 30px;
   }
 }
+
 /**Conocenos**/
 .conocenos span {
   font-family: "Poppins", sans-serif;
   font-size: 30px;
   font-weight: bold;
 }
+
 .conocer {
   margin-left: 570px;
 }
@@ -570,22 +698,28 @@ main {
 /* Estilos para pantallas más pequeñas (hasta 768px) */
 @media screen and (max-width: 768px) {
   .conocer {
-    margin-left: 0; /* Centra el elemento horizontalmente */
+    margin-left: 0;
+    /* Centra el elemento horizontalmente */
     text-align: center;
   }
 
   .ubicacion img,
   .nosotros img {
-    width: 100%; /* Ocupan el ancho completo del contenedor */
-    height: auto; /* Altura automática para mantener la proporción */
-    margin: 20px auto; /* Centra vertical y horizontalmente */
+    width: 100%;
+    /* Ocupan el ancho completo del contenedor */
+    height: auto;
+    /* Altura automática para mantener la proporción */
+    margin: 20px auto;
+    /* Centra vertical y horizontalmente */
   }
 
   .textUbicacion,
   .nosotrosTexto {
-    width: 100%; /* Ocupan el ancho completo del contenedor */
+    width: 100%;
+    /* Ocupan el ancho completo del contenedor */
     text-align: center;
-    margin: 20px auto; /* Centra vertical y horizontalmente */
+    margin: 20px auto;
+    /* Centra vertical y horizontalmente */
   }
 }
 
@@ -598,50 +732,62 @@ main {
   height: 350px;
   margin-top: 100px;
 }
+
 .links {
   margin-left: 600px;
   margin-top: -270px;
 }
+
 .links a {
   text-decoration: none;
   color: white;
 }
+
 .importante {
   margin-left: 900px;
   margin-top: -220px;
 }
+
 .correo {
   border-radius: 5px solid red;
   height: 20px;
   font-family: "Poppins", sans-serif;
 }
+
 .busqueda {
   height: 20px;
   border-radius: 10px;
 }
+
 .logo-footer img {
   width: 270px;
   height: 200px;
   margin-left: 160px;
   margin-top: 40px;
 }
+
 .contact {
   margin-left: 230px;
 }
+
 .footer__socials {
   margin-top: 20px;
   margin-left: 230px;
 }
+
 .footer__social {
   padding: 0 0 0 10px;
   font-size: 1.25rem;
   color: white;
   text-decoration: none;
 }
+
 .footer__social:hover {
   color: red;
 }
+
 @media screen and (max-width: 768px) {
+
   .links,
   .importante {
     display: none;
@@ -659,6 +805,7 @@ main {
     width: 100%;
   }
 }
+
 /*Opciones*/
 .contant-plataforma {
   background: red;
@@ -667,68 +814,22 @@ main {
   height: 25px;
   width: 1318px;
 }
+
 .containt-plataforma {
   color: white;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 400;
   padding: 2.5px 0 0 10px;
 }
+
 .containt-plataforma a:hover {
   color: black;
   cursor: pointer;
 }
+
 @media screen and (max-width: 768px) {
   .contant-plataforma {
     width: 100%;
-  }
-}
-
-
-
-.inicio {
-  display: flex;
-  padding: 3%;
-  padding-top: 7%;
-  padding-left: 10%;
-  align-items: center;
-}
-
-.inicio img {
-  width: 90%;
-  max-width: 500px;
-  padding: 5%;
-  height: auto;
-  border-radius: 50%;
-}
-
-.botones {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 500px;
-  gap: 30px;
-  padding: 5% 0;
-}
-
-.botones button {
-  width: 100%;
-  height: 50px;
-  background-color: red;
-  color: #ffffff;
-  font-size: 20px;
-  height: auto;
-}
-
-.botones button:hover {
-  background-color: #ffffff;
-  color: black;
-}
-
-/* Consulta de medios para dispositivos más pequeños */
-@media (max-width: 768px) {
-  .botones {
-    gap: 20px; /* Reducir aún más el espacio entre los botones en dispositivos muy pequeños */
   }
 }
 
@@ -814,6 +915,7 @@ button:hover {
 .todo {
   padding-top: 5%;
 }
+
 .dentro {
   padding: 2%;
   max-width: 1200px;
@@ -851,9 +953,11 @@ td {
   padding: 1%;
   text-align: center;
 }
+
 tr:nth-child(even) td {
   background-color: rgb(184, 192, 195);
 }
+
 tr:nth-child(odd) td {
   background-color: rgb(255, 255, 255);
 }
