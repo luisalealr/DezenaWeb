@@ -5,6 +5,7 @@ export default class taller extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
     ID: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -19,7 +20,8 @@ export default class taller extends Model {
     },
     correo: {
       type: DataTypes.STRING(30),
-      allowNull: false
+      allowNull: false,
+      unique: "correo"
     }
   }, {
     sequelize,
@@ -32,6 +34,14 @@ export default class taller extends Model {
         using: "BTREE",
         fields: [
           { name: "ID" },
+        ]
+      },
+      {
+        name: "correo",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "correo" },
         ]
       },
     ]

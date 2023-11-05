@@ -1,4 +1,7 @@
-import Administrador from '../models/administrador.js'; 
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Administrador = models.administrador;
 
 const AdministradorController = {
   // Obtener todos los administradores
@@ -30,7 +33,7 @@ const AdministradorController = {
       if (administrador) {
         return res.json(administrador);
       } else {
-        return res.status(404).json({ message: 'Administrador no encontrado' });
+        return res.status(404).json({ message: "Administrador no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -47,7 +50,7 @@ const AdministradorController = {
         await administrador.update(newData);
         return res.json(administrador);
       } else {
-        return res.status(404).json({ message: 'Administrador no encontrado' });
+        return res.status(404).json({ message: "Administrador no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -61,14 +64,14 @@ const AdministradorController = {
       const administrador = await Administrador.findByPk(cedula);
       if (administrador) {
         await administrador.destroy();
-        return res.json({ message: 'Administrador eliminado exitosamente' });
+        return res.json({ message: "Administrador eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Administrador no encontrado' });
+        return res.status(404).json({ message: "Administrador no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
-  }
+  },
 };
 
 export default AdministradorController;

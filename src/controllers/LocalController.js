@@ -1,4 +1,7 @@
-import Local from '../models/local.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Local = models.local;
 
 const LocalController = {
   // Obtener todos los locales
@@ -30,7 +33,7 @@ const LocalController = {
       if (local) {
         return res.json(local);
       } else {
-        return res.status(404).json({ message: 'Local no encontrado' });
+        return res.status(404).json({ message: "Local no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -47,7 +50,7 @@ const LocalController = {
         await local.update(newData);
         return res.json(local);
       } else {
-        return res.status(404).json({ message: 'Local no encontrado' });
+        return res.status(404).json({ message: "Local no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -61,9 +64,9 @@ const LocalController = {
       const local = await Local.findByPk(id);
       if (local) {
         await local.destroy();
-        return res.json({ message: 'Local eliminado exitosamente' });
+        return res.json({ message: "Local eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Local no encontrado' });
+        return res.status(404).json({ message: "Local no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

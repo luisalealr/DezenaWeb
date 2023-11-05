@@ -1,4 +1,7 @@
-import Taller from '../models/taller.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Taller = models.taller;
 
 const TallerController = {
   // Obtener todos los talleres
@@ -13,19 +16,17 @@ const TallerController = {
 
   // Crear un nuevo taller
   async createTaller(req, res) {
-    const { ID, direccion, nombre, correo } = req.body;
-
+    const { direccion, nombre, correo } = req.body;
     try {
       const newTaller = await Taller.create({
-        ID,
-        direccion,
-        nombre,
-        correo,
+        direccion: direccion,
+        nombre: nombre,
+        correo: correo,
       });
-
-      return res.status(201).json(newTaller);
+      return res.render("agregarTaller", { estado: "Exito" });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      console.log(error.message);
+      return res.render("agregarTaller", { estado: "Algo Fallo" });
     }
   },
 
@@ -39,7 +40,7 @@ const TallerController = {
       if (taller) {
         return res.json(taller);
       } else {
-        return res.status(404).json({ message: 'Taller no encontrado' });
+        return res.status(404).json({ message: "Taller no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -58,7 +59,7 @@ const TallerController = {
         await taller.update(newData);
         return res.json(taller);
       } else {
-        return res.status(404).json({ message: 'Taller no encontrado' });
+        return res.status(404).json({ message: "Taller no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -74,9 +75,9 @@ const TallerController = {
 
       if (taller) {
         await taller.destroy();
-        return res.json({ message: 'Taller eliminado exitosamente' });
+        return res.json({ message: "Taller eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Taller no encontrado' });
+        return res.status(404).json({ message: "Taller no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

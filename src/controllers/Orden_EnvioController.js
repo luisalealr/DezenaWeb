@@ -1,4 +1,7 @@
-import OrdenEnvio from '../models/orden_envio.js'; // Ruta al modelo 
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const OrdenEnvio = models.orden_envio;
 
 const OrdenEnvioController = {
   // Obtener todas las órdenes de envío
@@ -15,7 +18,11 @@ const OrdenEnvioController = {
   async createOrdenEnvio(req, res) {
     const { fecha, estado, local_idlocal } = req.body;
     try {
-      const newOrdenEnvio = await OrdenEnvio.create({ fecha, estado, local_idlocal });
+      const newOrdenEnvio = await OrdenEnvio.create({
+        fecha,
+        estado,
+        local_idlocal,
+      });
       return res.status(201).json(newOrdenEnvio);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -30,7 +37,9 @@ const OrdenEnvioController = {
       if (ordenEnvio) {
         return res.json(ordenEnvio);
       } else {
-        return res.status(404).json({ message: 'Orden de envío no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de envío no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -47,7 +56,9 @@ const OrdenEnvioController = {
         await ordenEnvio.update(newData);
         return res.json(ordenEnvio);
       } else {
-        return res.status(404).json({ message: 'Orden de envío no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de envío no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -61,9 +72,11 @@ const OrdenEnvioController = {
       const ordenEnvio = await OrdenEnvio.findByPk(id);
       if (ordenEnvio) {
         await ordenEnvio.destroy();
-        return res.json({ message: 'Orden de envío eliminada exitosamente' });
+        return res.json({ message: "Orden de envío eliminada exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Orden de envío no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de envío no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

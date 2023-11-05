@@ -19,9 +19,8 @@
     </style>
   </head>
   <body>
-
     <%- include('./partials/administradorNavbar') %>
-    
+
     <div class="container mt-4">
       <div class="row">
         <div class="col-md-6">
@@ -30,12 +29,16 @@
           <div class="card">
             <div class="card-body">
               <ul class="list-group">
+                <% if (ordenes) { %> <% ordenes.forEach(function(orden) { %>
                 <li class="list-group-item">
                   <label>
                     <input type="checkbox" value="item1" />
-                    Item 1
+                    Solicitud #<%= orden.ID %> - <%= orden.fecha %> - Pedido a:
+                    <%= orden.nombre_taller %>
                   </label>
                 </li>
+                <% }); %> <% } %>
+
                 <li class="list-group-item">
                   <label>
                     <input type="checkbox" value="item2" />
@@ -53,23 +56,26 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Columna 1</th>
-                <th>Columna 2</th>
-                <th>Columna 3</th>
-                <th>Columna 4</th>
-                <th>Columna 5</th>
-                <th>Columna 6</th>
+                <th>Número</th>
+                <th>Producto</th>
+                <th>Color</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Estado</th>
               </tr>
             </thead>
             <tbody>
+              <% if (productos_solicitados) { %> <%
+              productos_solicitados.forEach(function(producto_solicitado) { %>
               <tr>
-                <td>Dato 1</td>
-                <td>Dato 2</td>
-                <td>Dato 3</td>
-                <td>Dato 4</td>
-                <td>Dato 5</td>
-                <td>Dato 6</td>
+                <td><%= producto_solicitado.orden_solicitud_id %></td>
+                <td><%= producto_solicitado.nombre_producto %></td>
+                <td><%= producto_solicitado.nombre_color %></td>
+                <td><%= producto_solicitado.cantidad_solicitada %></td>
+                <td><%= producto_solicitado.fecha %></td>
+                <td><%= producto_solicitado.estado %></td>
               </tr>
+              <% }); %> <% } %>
             </tbody>
           </table>
         </div>

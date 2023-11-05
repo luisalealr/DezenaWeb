@@ -1,4 +1,7 @@
-import Color from "./models/color"; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Color = models.color;
 
 const ColorController = {
   // Obtener todos los colores

@@ -1,4 +1,7 @@
-import ProductoOrdenado from '../models/producto_ordenado.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const ProductoOrdenado = models.producto_ordenado;
 
 const ProductoOrdenadoController = {
   // Obtener todos los productos ordenados
@@ -46,7 +49,9 @@ const ProductoOrdenadoController = {
       if (productoOrdenado) {
         return res.json(productoOrdenado);
       } else {
-        return res.status(404).json({ message: 'Producto ordenado no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto ordenado no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -65,7 +70,9 @@ const ProductoOrdenadoController = {
         await productoOrdenado.update(newData);
         return res.json(productoOrdenado);
       } else {
-        return res.status(404).json({ message: 'Producto ordenado no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto ordenado no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -81,9 +88,13 @@ const ProductoOrdenadoController = {
 
       if (productoOrdenado) {
         await productoOrdenado.destroy();
-        return res.json({ message: 'Producto ordenado eliminado exitosamente' });
+        return res.json({
+          message: "Producto ordenado eliminado exitosamente",
+        });
       } else {
-        return res.status(404).json({ message: 'Producto ordenado no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto ordenado no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

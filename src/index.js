@@ -5,6 +5,8 @@ import { fileURLToPath } from "url";
 import indexRoutes from "./routes/index.js";
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.set("port", process.env.PORT || 3000);
 
