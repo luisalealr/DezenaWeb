@@ -13,13 +13,24 @@ body {
     font-size: 25px;
 }
 
-.form-control {
-    margin-bottom: 10px;
-}
-
 .form-group label {
     color: white;
     font-weight: bold;
+}
+
+.form-group{
+    padding: 20px;
+}
+
+select {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.opcion {
+    font-size: 15px; 
 }
 
 .container{
@@ -27,4 +38,17 @@ body {
     align-items: center;
     justify-content: center;
     height: 80vh;
+}
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.5em;
+    padding: 10px 20px;
 }
