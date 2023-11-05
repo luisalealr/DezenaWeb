@@ -1,4 +1,7 @@
-import OrdenSolicitud from '../models/orden_solicitud.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const OrdenSolicitud = models.orden_solicitud;
 
 const OrdenSolicitudController = {
   // Obtener todas las órdenes de solicitud
@@ -15,7 +18,11 @@ const OrdenSolicitudController = {
   async createOrdenSolicitud(req, res) {
     const { fecha, estado, taller_ID } = req.body;
     try {
-      const newOrdenSolicitud = await OrdenSolicitud.create({ fecha, estado, taller_ID });
+      const newOrdenSolicitud = await OrdenSolicitud.create({
+        fecha,
+        estado,
+        taller_ID,
+      });
       return res.status(201).json(newOrdenSolicitud);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -30,7 +37,9 @@ const OrdenSolicitudController = {
       if (ordenSolicitud) {
         return res.json(ordenSolicitud);
       } else {
-        return res.status(404).json({ message: 'Orden de solicitud no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de solicitud no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -47,7 +56,9 @@ const OrdenSolicitudController = {
         await ordenSolicitud.update(newData);
         return res.json(ordenSolicitud);
       } else {
-        return res.status(404).json({ message: 'Orden de solicitud no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de solicitud no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -61,9 +72,13 @@ const OrdenSolicitudController = {
       const ordenSolicitud = await OrdenSolicitud.findByPk(id);
       if (ordenSolicitud) {
         await ordenSolicitud.destroy();
-        return res.json({ message: 'Orden de solicitud eliminada exitosamente' });
+        return res.json({
+          message: "Orden de solicitud eliminada exitosamente",
+        });
       } else {
-        return res.status(404).json({ message: 'Orden de solicitud no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de solicitud no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

@@ -1,4 +1,7 @@
-import Producto from '../models/producto.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Producto = models.producto;
 
 const ProductoController = {
   // Obtener todos los productos
@@ -13,7 +16,13 @@ const ProductoController = {
 
   // Crear un nuevo producto
   async createProducto(req, res) {
-    const { referencia, nombre, descripcion, precio_mercado, costo_produccion } = req.body;
+    const {
+      referencia,
+      nombre,
+      descripcion,
+      precio_mercado,
+      costo_produccion,
+    } = req.body;
 
     try {
       const newProducto = await Producto.create({
@@ -40,7 +49,7 @@ const ProductoController = {
       if (producto) {
         return res.json(producto);
       } else {
-        return res.status(404).json({ message: 'Producto no encontrado' });
+        return res.status(404).json({ message: "Producto no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -59,7 +68,7 @@ const ProductoController = {
         await producto.update(newData);
         return res.json(producto);
       } else {
-        return res.status(404).json({ message: 'Producto no encontrado' });
+        return res.status(404).json({ message: "Producto no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -75,9 +84,9 @@ const ProductoController = {
 
       if (producto) {
         await producto.destroy();
-        return res.json({ message: 'Producto eliminado exitosamente' });
+        return res.json({ message: "Producto eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Producto no encontrado' });
+        return res.status(404).json({ message: "Producto no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

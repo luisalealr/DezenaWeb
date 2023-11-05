@@ -1,4 +1,7 @@
-import Taller from '../models/taller.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Taller = models.taller;
 
 const TallerController = {
   // Obtener todos los talleres
@@ -39,7 +42,7 @@ const TallerController = {
       if (taller) {
         return res.json(taller);
       } else {
-        return res.status(404).json({ message: 'Taller no encontrado' });
+        return res.status(404).json({ message: "Taller no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -58,7 +61,7 @@ const TallerController = {
         await taller.update(newData);
         return res.json(taller);
       } else {
-        return res.status(404).json({ message: 'Taller no encontrado' });
+        return res.status(404).json({ message: "Taller no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -74,9 +77,9 @@ const TallerController = {
 
       if (taller) {
         await taller.destroy();
-        return res.json({ message: 'Taller eliminado exitosamente' });
+        return res.json({ message: "Taller eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Taller no encontrado' });
+        return res.status(404).json({ message: "Taller no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

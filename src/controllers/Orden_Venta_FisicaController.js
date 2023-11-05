@@ -1,4 +1,7 @@
-import OrdenVentaFisica from '../models/orden_venta_fisica.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const ordenVentaFisica = models.orden_venta_fisica;
 
 const OrdenVentaFisicaController = {
   // Obtener todas las órdenes de venta física
@@ -15,7 +18,11 @@ const OrdenVentaFisicaController = {
   async createOrdenVentaFisica(req, res) {
     const { fecha, vendedor_cedula, cliente_cedula } = req.body;
     try {
-      const newOrdenVentaFisica = await OrdenVentaFisica.create({ fecha, vendedor_cedula, cliente_cedula });
+      const newOrdenVentaFisica = await OrdenVentaFisica.create({
+        fecha,
+        vendedor_cedula,
+        cliente_cedula,
+      });
       return res.status(201).json(newOrdenVentaFisica);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -30,7 +37,9 @@ const OrdenVentaFisicaController = {
       if (ordenVentaFisica) {
         return res.json(ordenVentaFisica);
       } else {
-        return res.status(404).json({ message: 'Orden de venta física no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de venta física no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -47,7 +56,9 @@ const OrdenVentaFisicaController = {
         await ordenVentaFisica.update(newData);
         return res.json(ordenVentaFisica);
       } else {
-        return res.status(404).json({ message: 'Orden de venta física no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de venta física no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -61,9 +72,13 @@ const OrdenVentaFisicaController = {
       const ordenVentaFisica = await OrdenVentaFisica.findByPk(id);
       if (ordenVentaFisica) {
         await ordenVentaFisica.destroy();
-        return res.json({ message: 'Orden de venta física eliminada exitosamente' });
+        return res.json({
+          message: "Orden de venta física eliminada exitosamente",
+        });
       } else {
-        return res.status(404).json({ message: 'Orden de venta física no encontrada' });
+        return res
+          .status(404)
+          .json({ message: "Orden de venta física no encontrada" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

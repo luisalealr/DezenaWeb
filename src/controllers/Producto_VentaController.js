@@ -1,4 +1,7 @@
-import ProductoVenta from '../models/producto_venta.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const ProductoVenta = models.producto_venta;
 
 const ProductoVentaController = {
   // Obtener todos los productos vendidos
@@ -44,7 +47,9 @@ const ProductoVentaController = {
       if (productoVendido) {
         return res.json(productoVendido);
       } else {
-        return res.status(404).json({ message: 'Producto vendido no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto vendido no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -63,7 +68,9 @@ const ProductoVentaController = {
         await productoVendido.update(newData);
         return res.json(productoVendido);
       } else {
-        return res.status(404).json({ message: 'Producto vendido no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto vendido no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -79,9 +86,11 @@ const ProductoVentaController = {
 
       if (productoVendido) {
         await productoVendido.destroy();
-        return res.json({ message: 'Producto vendido eliminado exitosamente' });
+        return res.json({ message: "Producto vendido eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Producto vendido no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto vendido no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

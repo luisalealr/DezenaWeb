@@ -1,4 +1,7 @@
-import ProductoCasaMatriz from '../models/producto_casa_matriz.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const ProductoCasaMatriz = models.producto_casa_matriz;
 
 const ProductoCasaMatrizController = {
   // Obtener todos los productos en casa matriz
@@ -15,7 +18,11 @@ const ProductoCasaMatrizController = {
   async createProductoCasaMatriz(req, res) {
     const { producto_referencia, color_IDcolor, cantidad } = req.body;
     try {
-      const newProductoCasaMatriz = await ProductoCasaMatriz.create({ producto_referencia, color_IDcolor, cantidad });
+      const newProductoCasaMatriz = await ProductoCasaMatriz.create({
+        producto_referencia,
+        color_IDcolor,
+        cantidad,
+      });
       return res.status(201).json(newProductoCasaMatriz);
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -26,11 +33,16 @@ const ProductoCasaMatrizController = {
   async getProductoCasaMatrizByReferenciaColor(req, res) {
     const { producto_referencia, color_IDcolor } = req.params; // Suponiendo que los parámetros vienen como parte de la URL
     try {
-      const productoCasaMatriz = await ProductoCasaMatriz.findByPk({ producto_referencia, color_IDcolor });
+      const productoCasaMatriz = await ProductoCasaMatriz.findByPk({
+        producto_referencia,
+        color_IDcolor,
+      });
       if (productoCasaMatriz) {
         return res.json(productoCasaMatriz);
       } else {
-        return res.status(404).json({ message: 'Producto en casa matriz no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto en casa matriz no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -42,12 +54,17 @@ const ProductoCasaMatrizController = {
     const { producto_referencia, color_IDcolor } = req.params;
     const newData = req.body; // Suponiendo que envías los nuevos datos a actualizar
     try {
-      const productoCasaMatriz = await ProductoCasaMatriz.findByPk({ producto_referencia, color_IDcolor });
+      const productoCasaMatriz = await ProductoCasaMatriz.findByPk({
+        producto_referencia,
+        color_IDcolor,
+      });
       if (productoCasaMatriz) {
         await productoCasaMatriz.update(newData);
         return res.json(productoCasaMatriz);
       } else {
-        return res.status(404).json({ message: 'Producto en casa matriz no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto en casa matriz no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -58,12 +75,19 @@ const ProductoCasaMatrizController = {
   async deleteProductoCasaMatrizByReferenciaColor(req, res) {
     const { producto_referencia, color_IDcolor } = req.params;
     try {
-      const productoCasaMatriz = await ProductoCasaMatriz.findByPk({ producto_referencia, color_IDcolor });
+      const productoCasaMatriz = await ProductoCasaMatriz.findByPk({
+        producto_referencia,
+        color_IDcolor,
+      });
       if (productoCasaMatriz) {
         await productoCasaMatriz.destroy();
-        return res.json({ message: 'Producto en casa matriz eliminado exitosamente' });
+        return res.json({
+          message: "Producto en casa matriz eliminado exitosamente",
+        });
       } else {
-        return res.status(404).json({ message: 'Producto en casa matriz no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto en casa matriz no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

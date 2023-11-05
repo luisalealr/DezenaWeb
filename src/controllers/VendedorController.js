@@ -1,4 +1,7 @@
-import Vendedor from '../models/vendedor.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Vendedor = models.vendedor;
 
 const VendedorController = {
   // Obtener todos los vendedores
@@ -37,7 +40,7 @@ const VendedorController = {
       if (vendedor) {
         return res.json(vendedor);
       } else {
-        return res.status(404).json({ message: 'Vendedor no encontrado' });
+        return res.status(404).json({ message: "Vendedor no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -56,7 +59,7 @@ const VendedorController = {
         await vendedor.update(newData);
         return res.json(vendedor);
       } else {
-        return res.status(404).json({ message: 'Vendedor no encontrado' });
+        return res.status(404).json({ message: "Vendedor no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -72,9 +75,9 @@ const VendedorController = {
 
       if (vendedor) {
         await vendedor.destroy();
-        return res.json({ message: 'Vendedor eliminado exitosamente' });
+        return res.json({ message: "Vendedor eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Vendedor no encontrado' });
+        return res.status(404).json({ message: "Vendedor no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

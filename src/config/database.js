@@ -1,7 +1,6 @@
 import { config } from "dotenv";
 config();
-import { Sequelize, DataTypes } from "sequelize";
-import initModels from "../models/init-models.js";
+import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
   process.env.DB,
@@ -13,8 +12,6 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,
   }
 );
-
-const models = initModels(sequelize, DataTypes);
 
 (async () => {
   try {

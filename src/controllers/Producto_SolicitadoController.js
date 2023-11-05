@@ -1,11 +1,14 @@
-import ProductoSolicitado from '../models/producto_solicitado.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const ProductoSolicitado = models.producto_solicitado;
 
 const ProductoSolicitadoController = {
   // Obtener todos los productos solicitados
   async getAllProductosSolicitados(req, res) {
     try {
       const productosSolicitados = await ProductoSolicitado.findAll();
-      return res.json(productosSolicitados);
+      return productosSolicitados;
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -44,7 +47,9 @@ const ProductoSolicitadoController = {
       if (productoSolicitado) {
         return res.json(productoSolicitado);
       } else {
-        return res.status(404).json({ message: 'Producto solicitado no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto solicitado no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -63,7 +68,9 @@ const ProductoSolicitadoController = {
         await productoSolicitado.update(newData);
         return res.json(productoSolicitado);
       } else {
-        return res.status(404).json({ message: 'Producto solicitado no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto solicitado no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -79,9 +86,13 @@ const ProductoSolicitadoController = {
 
       if (productoSolicitado) {
         await productoSolicitado.destroy();
-        return res.json({ message: 'Producto solicitado eliminado exitosamente' });
+        return res.json({
+          message: "Producto solicitado eliminado exitosamente",
+        });
       } else {
-        return res.status(404).json({ message: 'Producto solicitado no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Producto solicitado no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

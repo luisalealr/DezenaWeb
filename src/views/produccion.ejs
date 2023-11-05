@@ -19,9 +19,8 @@
     </style>
   </head>
   <body>
-
     <%- include('./partials/administradorNavbar') %>
-    
+
     <div class="container mt-4">
       <div class="row">
         <div class="col-md-6">
@@ -62,14 +61,17 @@
               </tr>
             </thead>
             <tbody>
+              <% if (productos_solicitados) { %> <%
+              productos_solicitados.forEach(function(producto_solicitado) { %>
               <tr>
-                <td>Dato 1</td>
+                <td><%= producto_solicitado.id %></td>
                 <td>Dato 2</td>
                 <td>Dato 3</td>
                 <td>Dato 4</td>
                 <td>Dato 5</td>
                 <td>Dato 6</td>
               </tr>
+              <% }); %> <% } %>
             </tbody>
           </table>
         </div>

@@ -1,4 +1,7 @@
-import Cliente from "../models/cliente"; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Cliente = models.cliente;
 
 const ClienteController = {
   // Obtener todos los clientes

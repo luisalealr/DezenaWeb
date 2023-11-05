@@ -1,4 +1,7 @@
-import InventarioLocal from '../models/inventario_local.js'; // Ruta al modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const InventarioLocal = models.inventario_local;
 
 const InventarioLocalController = {
   // Obtener todos los registros de inventario local
@@ -13,7 +16,11 @@ const InventarioLocalController = {
 
   // Crear un nuevo registro de inventario local
   async createInventarioLocal(req, res) {
-    const { producto_casa_matriz_producto_referencia, producto_casa_matriz_color_IDcolor, local_IDlocal } = req.body;
+    const {
+      producto_casa_matriz_producto_referencia,
+      producto_casa_matriz_color_IDcolor,
+      local_IDlocal,
+    } = req.body;
     try {
       const newInventarioLocal = await InventarioLocal.create({
         producto_casa_matriz_producto_referencia,
@@ -42,7 +49,9 @@ const InventarioLocalController = {
       if (inventarioLocal) {
         return res.json(inventarioLocal);
       } else {
-        return res.status(404).json({ message: 'Registro de inventario local no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Registro de inventario local no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -67,7 +76,9 @@ const InventarioLocalController = {
         await inventarioLocal.update(newData);
         return res.json(inventarioLocal);
       } else {
-        return res.status(404).json({ message: 'Registro de inventario local no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Registro de inventario local no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -89,9 +100,13 @@ const InventarioLocalController = {
       });
       if (inventarioLocal) {
         await inventarioLocal.destroy();
-        return res.json({ message: 'Registro de inventario local eliminado exitosamente' });
+        return res.json({
+          message: "Registro de inventario local eliminado exitosamente",
+        });
       } else {
-        return res.status(404).json({ message: 'Registro de inventario local no encontrado' });
+        return res
+          .status(404)
+          .json({ message: "Registro de inventario local no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

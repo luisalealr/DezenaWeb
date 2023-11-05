@@ -1,4 +1,7 @@
-import Usuario from '../models/usuario.js'; // Modelo
+import sequelize from "../config/database.js";
+import initModels from "../models/init-models.js";
+const models = initModels(sequelize);
+const Usuario = models.usuario;
 
 const UsuarioController = {
   // Obtener todos los usuarios
@@ -41,7 +44,7 @@ const UsuarioController = {
       if (usuario) {
         return res.json(usuario);
       } else {
-        return res.status(404).json({ message: 'Usuario no encontrado' });
+        return res.status(404).json({ message: "Usuario no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -60,7 +63,7 @@ const UsuarioController = {
         await usuario.update(newData);
         return res.json(usuario);
       } else {
-        return res.status(404).json({ message: 'Usuario no encontrado' });
+        return res.status(404).json({ message: "Usuario no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -76,9 +79,9 @@ const UsuarioController = {
 
       if (usuario) {
         await usuario.destroy();
-        return res.json({ message: 'Usuario eliminado exitosamente' });
+        return res.json({ message: "Usuario eliminado exitosamente" });
       } else {
-        return res.status(404).json({ message: 'Usuario no encontrado' });
+        return res.status(404).json({ message: "Usuario no encontrado" });
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });
