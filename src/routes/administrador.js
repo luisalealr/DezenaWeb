@@ -1,6 +1,7 @@
 import { Router } from "express";
 import ProductoSolicitadoController from "../controllers/Producto_SolicitadoController.js";
 import TallerController from "../controllers/TallerController.js";
+import OrdenSolicitudController from "../controllers/Orden_SolicitudController.js";
 
 const router = Router();
 
@@ -14,7 +15,7 @@ router.get("/agregarTaller", (req, res) => {
   res.render("agregarTaller");
 });
 
-router.get("/solicitarProducto", TallerController.getAllTalleres);
+router.get("/solicitarProducto", OrdenSolicitudController.getTallerYColor);
 
 router.post("/agregarTaller", TallerController.createTaller);
 
