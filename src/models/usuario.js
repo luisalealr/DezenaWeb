@@ -1,6 +1,9 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('usuario', {
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class usuario extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
     cedula: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -50,4 +53,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+  }
+}

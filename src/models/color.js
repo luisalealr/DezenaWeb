@@ -1,6 +1,9 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('color', {
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class color extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
     IDcolor: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -26,4 +29,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+  }
+}

@@ -1,6 +1,9 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('producto_casa_matriz', {
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class producto_casa_matriz extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
     producto_referencia: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -47,4 +50,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+  }
+}

@@ -1,6 +1,9 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('orden_envio', {
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class orden_envio extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
     IDorden: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -45,4 +48,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+  }
+}

@@ -1,6 +1,9 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('producto', {
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class producto extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
     referencia: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -37,4 +40,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+  }
+}

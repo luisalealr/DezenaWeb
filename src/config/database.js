@@ -1,24 +1,28 @@
-var mysql = require("mysql");
-var express = require("express");
-require("dotenv").config();
+import { config } from "dotenv";
+config();
+import { Sequelize, DataTypes } from "sequelize";
+import initModels from "../models/init-models.js";
 
-async function run() {
-  var connection = mysql.createConnection({
+const sequelize = new Sequelize(
+  process.env.DB,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
+    dialect: "mysql",
     port: process.env.DB_PORT,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB,
-  });
-  connection.connect();
-  connection.query(
-    "SELECT * FROM PROFESORES",
-    function (error, results, fields) {
-      if (error) throw error;
-      console.log("The solution is: ", results[0].nombre);
-    }
-  );
-  connection.end();
-}
+  }
+);
 
-run();
+const models = initModels(sequelize, DataTypes);
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Conexión a la base de datos exitosa");
+  } catch (error) {
+    console.error("Error en la conexión a la base de datos:", error);
+  }
+})();
+
+export default sequelize;

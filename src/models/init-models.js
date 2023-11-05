@@ -1,40 +1,41 @@
-var DataTypes = require("sequelize").DataTypes;
-var _administrador = require("./administrador");
-var _cliente = require("./cliente");
-var _color = require("./color");
-var _devolucion = require("./devolucion");
-var _inventario_local = require("./inventario_local");
-var _local = require("./local");
-var _orden_envio = require("./orden_envio");
-var _orden_solicitud = require("./orden_solicitud");
-var _orden_venta_fisica = require("./orden_venta_fisica");
-var _producto = require("./producto");
-var _producto_casa_matriz = require("./producto_casa_matriz");
-var _producto_ordenado = require("./producto_ordenado");
-var _producto_solicitado = require("./producto_solicitado");
-var _producto_venta = require("./producto_venta");
-var _taller = require("./taller");
-var _usuario = require("./usuario");
-var _vendedor = require("./vendedor");
+import _sequelize from "sequelize";
+const DataTypes = _sequelize.DataTypes;
+import _administrador from  "./administrador.js";
+import _cliente from  "./cliente.js";
+import _color from  "./color.js";
+import _devolucion from  "./devolucion.js";
+import _inventario_local from  "./inventario_local.js";
+import _local from  "./local.js";
+import _orden_envio from  "./orden_envio.js";
+import _orden_solicitud from  "./orden_solicitud.js";
+import _orden_venta_fisica from  "./orden_venta_fisica.js";
+import _producto from  "./producto.js";
+import _producto_casa_matriz from  "./producto_casa_matriz.js";
+import _producto_ordenado from  "./producto_ordenado.js";
+import _producto_solicitado from  "./producto_solicitado.js";
+import _producto_venta from  "./producto_venta.js";
+import _taller from  "./taller.js";
+import _usuario from  "./usuario.js";
+import _vendedor from  "./vendedor.js";
 
-function initModels(sequelize) {
-  var administrador = _administrador(sequelize, DataTypes);
-  var cliente = _cliente(sequelize, DataTypes);
-  var color = _color(sequelize, DataTypes);
-  var devolucion = _devolucion(sequelize, DataTypes);
-  var inventario_local = _inventario_local(sequelize, DataTypes);
-  var local = _local(sequelize, DataTypes);
-  var orden_envio = _orden_envio(sequelize, DataTypes);
-  var orden_solicitud = _orden_solicitud(sequelize, DataTypes);
-  var orden_venta_fisica = _orden_venta_fisica(sequelize, DataTypes);
-  var producto = _producto(sequelize, DataTypes);
-  var producto_casa_matriz = _producto_casa_matriz(sequelize, DataTypes);
-  var producto_ordenado = _producto_ordenado(sequelize, DataTypes);
-  var producto_solicitado = _producto_solicitado(sequelize, DataTypes);
-  var producto_venta = _producto_venta(sequelize, DataTypes);
-  var taller = _taller(sequelize, DataTypes);
-  var usuario = _usuario(sequelize, DataTypes);
-  var vendedor = _vendedor(sequelize, DataTypes);
+export default function initModels(sequelize) {
+  const administrador = _administrador.init(sequelize, DataTypes);
+  const cliente = _cliente.init(sequelize, DataTypes);
+  const color = _color.init(sequelize, DataTypes);
+  const devolucion = _devolucion.init(sequelize, DataTypes);
+  const inventario_local = _inventario_local.init(sequelize, DataTypes);
+  const local = _local.init(sequelize, DataTypes);
+  const orden_envio = _orden_envio.init(sequelize, DataTypes);
+  const orden_solicitud = _orden_solicitud.init(sequelize, DataTypes);
+  const orden_venta_fisica = _orden_venta_fisica.init(sequelize, DataTypes);
+  const producto = _producto.init(sequelize, DataTypes);
+  const producto_casa_matriz = _producto_casa_matriz.init(sequelize, DataTypes);
+  const producto_ordenado = _producto_ordenado.init(sequelize, DataTypes);
+  const producto_solicitado = _producto_solicitado.init(sequelize, DataTypes);
+  const producto_venta = _producto_venta.init(sequelize, DataTypes);
+  const taller = _taller.init(sequelize, DataTypes);
+  const usuario = _usuario.init(sequelize, DataTypes);
+  const vendedor = _vendedor.init(sequelize, DataTypes);
 
   color.belongsToMany(producto, { as: 'producto_referencia_productos', through: producto_casa_matriz, foreignKey: "color_IDcolor", otherKey: "producto_referencia" });
   producto.belongsToMany(color, { as: 'color_IDcolor_colors', through: producto_casa_matriz, foreignKey: "producto_referencia", otherKey: "color_IDcolor" });
@@ -105,6 +106,3 @@ function initModels(sequelize) {
     vendedor,
   };
 }
-module.exports = initModels;
-module.exports.initModels = initModels;
-module.exports.default = initModels;

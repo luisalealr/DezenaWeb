@@ -1,6 +1,9 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('inventario_local', {
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class inventario_local extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
     producto_casa_matriz_producto_referencia: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -66,4 +69,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+  }
+}
