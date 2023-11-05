@@ -4,6 +4,9 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import indexRoutes from "./routes/index.js";
 
+import { config } from "dotenv";
+config();
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
