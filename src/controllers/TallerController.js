@@ -16,19 +16,17 @@ const TallerController = {
 
   // Crear un nuevo taller
   async createTaller(req, res) {
-    const { ID, direccion, nombre, correo } = req.body;
-
+    const { direccion, nombre, correo } = req.body;
     try {
       const newTaller = await Taller.create({
-        ID,
-        direccion,
-        nombre,
-        correo,
+        direccion: direccion,
+        nombre: nombre,
+        correo: correo,
       });
-
-      return res.status(201).json(newTaller);
+      return res.render("agregarTaller", { estado: "Exito" });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      console.log(error.message);
+      return res.render("agregarTaller", { estado: "Algo Fallo" });
     }
   },
 

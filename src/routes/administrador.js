@@ -1,5 +1,6 @@
 import { Router } from "express";
 import ProductoSolicitadoController from "../controllers/Producto_SolicitadoController.js";
+import TallerController from "../controllers/TallerController.js";
 
 const router = Router();
 
@@ -9,15 +10,12 @@ router.get("/agregarTaller", (req, res) => {
   res.render("agregarTaller");
 });
 
+router.post("/agregarTaller", TallerController.createTaller);
+
 // Ruta para mostrar la vista de produccion
-router.get("/produccion", async (req, res) => {
-  try {
-    const productos_solicitados =
-      await ProductoSolicitadoController.getAllProductosSolicitados(req, res);
-    return res.render("produccion", { productos_solicitados });
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-});
+router.get(
+  "/produccion",
+  ProductoSolicitadoController.getAllProductosSolicitadosYOrdenes
+);
 
 export default router;

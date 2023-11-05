@@ -2,13 +2,43 @@ import sequelize from "../config/database.js";
 import initModels from "../models/init-models.js";
 const models = initModels(sequelize);
 const ProductoSolicitado = models.producto_solicitado;
+const OrdenSolicitud = models.orden_solicitud;
+const Producto = models.producto;
+const Color = models.color;
+const Taller = models.taller;
 
 const ProductoSolicitadoController = {
+  // Obtener lista de productos solicitados y ordenes solicitadas
+  async getAllProductosSolicitadosYOrdenes(req, res) {
+    try {
+      const productos_solicitados = await ProductoSolicitado.findAll();
+      const ordenes = await OrdenSolicitud.findAll({
+        where: { estado: "Pendiente" },
+      });
+
+      productos_solicitados.forEach(function (producto_solicitado) {
+        let idProducto =
+          producto_solicitado.producto_casa_matriz_producto_referencia;
+        let idColor = producto_solicitado.producto_casa_matriz_color_id;
+        producto_solicitado.nombre_producto =
+          Producto.findByPk(idProducto).nombre;
+        producto_solicitado.nombre_color = Color.findByPk(idColor).nombre;
+      });
+
+      ordenes.forEach(function (orden) {
+        let idTaller = orden.taller_ID;
+        orden.nombre_taller = Taller.findByPk(idTaller).nombre;
+      });
+      return res.render("produccion", { productos_solicitados, ordenes });
+    } catch (error) {
+      return res.status(500).json({ error: "Algo fallo" });
+    }
+  },
   // Obtener todos los productos solicitados
   async getAllProductosSolicitados(req, res) {
     try {
       const productosSolicitados = await ProductoSolicitado.findAll();
-      return productosSolicitados;
+      return res.json(productosSolicitados);
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
