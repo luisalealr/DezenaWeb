@@ -10,16 +10,21 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
-    margin-top: 20px;
-    /* Espacio entre el navbar y el contenedor */
+    font-size: 25px;
 }
 
 .form-control {
     margin-bottom: 10px;
-    /* Espacio entre elementos del formulario */
 }
 
 .form-group label {
     color: white;
     font-weight: bold;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
 }

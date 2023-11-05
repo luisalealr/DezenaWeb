@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Administrador</title>
+    <link rel="stylesheet" href="../css/cuerpo.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <%- include('./header_admin.ejs') %>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="opaque-background">
+                        <form action="./" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="referencia">Referencia</label>
+                                    <input type="text" class="form-control" id="referencia" name="referencia"
+                                    placeholder="Ingrese la referencia"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="cantidad">Cantidad</label>
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad"
+                                    placeholder="Ingrese la cantidad"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="satelite">Satélite</label>
+                                    <select id="opciones" name="opciones" placeholder="Elija el taller">
+                                        <option value="opcion1">USD</option>
+                                        <option value="opcion2">COP</option>
+                                        <option value="opcion3">VEB</option>
+                                      </select>
+                                </div>
+                                <div class="form-group col-md-6 d-flex align-items-end justify-content-center">
+                                    <button type="submit" class="btn btn-primary">Solicitar Producto</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>

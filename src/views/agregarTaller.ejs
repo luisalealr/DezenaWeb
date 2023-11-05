@@ -1,70 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Administrador</title>
-    <link rel="stylesheet" href="../css/cuerpo.css" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
 
-  <body>
-    <%- include('./header_admin.ejs') %> <% if (typeof estado !== 'undefined'){
-    %>
-    <div class="alert alert-primary" role="alert"><%= estado %></div>
-    <% } %>
+<head>
+  <meta charset="UTF-8" />
+  <title>Administrador</title>
+  <link rel="stylesheet" href="../css/cuerpo.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-10">
-          <div class="opaque-background">
-            <form action="./agregarTaller" method="POST">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="nombre">Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nombre"
-                    name="nombre"
-                    placeholder="Ingrese nombre del taller"
-                  />
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="correo">Correo</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="correo"
-                    name="correo"
-                    placeholder="Ingrese correo del taller"
-                  />
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="direccion">Dirección</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="direccion"
-                    name="direccion"
-                    placeholder="Ingrese direccion del taller"
-                  />
-                </div>
-                <div
-                  class="form-group col-md-6 d-flex align-items-end justify-content-center"
-                >
-                  <button type="submit" class="btn btn-primary">
-                    Agregar taller
-                  </button>
-                </div>
+<body>
+  <%- include('./header_admin.ejs') %>
+    <% if (typeof estado !=='undefined' ){ %>
+      <div class="alert alert-primary" role="alert">
+        <%= estado %>
+      </div>
+      <% } %>
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <div class="opaque-background">
+                <form action="./agregarTaller" method="POST">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre"
+                        placeholder="Ingrese nombre del taller" />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="correo">Correo</label>
+                      <input type="text" class="form-control" id="correo" name="correo"
+                        placeholder="Ingrese correo del taller" />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="direccion">Dirección</label>
+                      <input type="text" class="form-control" id="direccion" name="direccion"
+                        placeholder="Ingrese direccion del taller" />
+                    </div>
+                    <div class="form-group col-md-6 d-flex align-items-end justify-content-center">
+                      <button type="submit" class="btn btn-primary">
+                        Agregar taller
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 </body>
 
 </html>

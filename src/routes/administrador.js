@@ -6,8 +6,16 @@ const router = Router();
 
 //Rutas administrador/*
 
+router.get("/", (req, res) => {
+  res.render("administrador");
+});
+
 router.get("/agregarTaller", (req, res) => {
   res.render("agregarTaller");
+});
+
+router.get("/solicitarProducto", (req, res) => {
+  res.render("solicitarProducto");
 });
 
 router.post("/agregarTaller", TallerController.createTaller);
@@ -17,5 +25,6 @@ router.get(
   "/produccion",
   ProductoSolicitadoController.getAllProductosSolicitadosYOrdenes
 );
+
 
 export default router;
