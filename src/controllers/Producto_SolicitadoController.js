@@ -13,7 +13,7 @@ const ProductoSolicitadoController = {
     try {
       const productos_solicitados = await ProductoSolicitado.findAll();
       const ordenes = await OrdenSolicitud.findAll({
-        where: { estado: "Pendiente" },
+        where: { estado: "SOLICITADO" },
       });
 
       productos_solicitados.forEach(function (producto_solicitado) {

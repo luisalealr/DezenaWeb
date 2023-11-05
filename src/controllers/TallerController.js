@@ -27,7 +27,7 @@ const TallerController = {
       return res.render("agregarTaller", { estado: "Exito" });
     } catch (error) {
       console.log(error.message);
-      return res.render("agregarTaller", { estado: "Algo Fallo" });
+      return res.render("agregarTaller", { estado: "Algo Falló" });
     }
   },
 
