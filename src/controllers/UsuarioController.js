@@ -1,4 +1,5 @@
 import sequelize from "../config/database.js";
+import administrador from "../models/administrador.js";
 import initModels from "../models/init-models.js";
 const models = initModels(sequelize);
 const Usuario = models.usuario;
@@ -11,6 +12,42 @@ const UsuarioController = {
       return res.json(usuarios);
     } catch (error) {
       return res.status(500).json({ error: error.message });
+    }
+  },
+
+  //Iniciar Sesión de un usuario
+  async getUsuarioByCorreo(req, res) {
+    const {correo, contrasena } = req.body; // se agarran el correo y contraseña del usuario
+
+    try {
+      const usuario = await Usuario.findOne({
+        where: { correo: correo }
+      });
+
+      if (usuario.contrasena == contrasena) {
+        return res.render("administrador");
+      } else {
+        return res.render("loginAdmin");
+      }
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  },
+
+  //Crear un usuario para el login
+
+  async createUsuarioLogin(req, res) {
+    const { correo,contrasena } = req.body;
+
+    try {
+      const newUsuario = await Usuario.create({
+        correo,
+        contrasena,
+      });
+
+      return res.render("loginAdmin");
+    } catch (error) {
+      return res.render("registro");
     }
   },
 
