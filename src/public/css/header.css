@@ -1,6 +1,7 @@
 .navbar {
     border-bottom: 2px solid #000;
     height: 80px;
+    background-color: white;
 }
 
 .navbar-light .navbar-nav .nav-link {

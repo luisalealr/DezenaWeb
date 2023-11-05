@@ -2,6 +2,8 @@ import sequelize from "../config/database.js";
 import initModels from "../models/init-models.js";
 const models = initModels(sequelize);
 const OrdenSolicitud = models.orden_solicitud;
+const Taller = models.taller;
+const Color = models.color;
 
 const OrdenSolicitudController = {
   // Obtener todas las órdenes de solicitud
@@ -9,6 +11,17 @@ const OrdenSolicitudController = {
     try {
       const ordenesSolicitud = await OrdenSolicitud.findAll();
       return res.json(ordenesSolicitud);
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  },
+
+  //Obtener tallere sy colores
+  async getTallerYColor(req, res) {
+    try {
+      const talleres = await Taller.findAll();
+      const colores = await Color.findAll();
+      return res.render("solicitarProducto", { talleres, colores });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -54,7 +67,7 @@ const OrdenSolicitudController = {
       const ordenSolicitud = await OrdenSolicitud.findByPk(id);
       if (ordenSolicitud) {
         await ordenSolicitud.update(newData);
-      } 
+      }
       return res.redirect("/administrador/produccion");
     } catch (error) {
       return res.redirect("/administrador/produccion");

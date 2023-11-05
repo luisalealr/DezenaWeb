@@ -39,9 +39,9 @@
                                 <div class="form-group col-md-6">
                                     <label for="satelite">Color</label>
                                     <select class="opcion" id="opciones" name="opciones">
-                                    <% if (talleres) { %> 
-                                        <% talleres.forEach(function(taller) { %>
-                                        <option class="opcion" value="<%=taller.id%>" ><%= taller.nombre %></option>
+                                    <% if (colores) { %> 
+                                        <% colores.forEach(function(color) { %>
+                                        <option class="opcion" value="<%=color.id%>" ><%= color.nombre %></option>
                                     <% }); %> 
                                     <% } %>
                                     </select>
