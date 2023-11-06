@@ -9,9 +9,22 @@ router.get("/", (req, res) => {
   res.render("index2");
 });
 
+
 router.use("/vendedor", vendedorRouter);
 router.use("/producto", productoRouter);
 router.use("/administrador", administradorRouter);
+router.get('/productosMujer', (req, res) => {
+  res.render("productosMujer");
+});
+router.get('/productosHombre', (req, res) => {
+  res.render("productosHombre");
+});
+router.get('/productosOutlet', (req, res) => {
+  res.render("productosOutlet");
+});
+router.get('/productosNovedades', (req, res) => {
+  res.render("productosNovedades");
+});
 router.get("/loginAdmin",(req, res) => {
   res.render("loginAdmin");
 });
