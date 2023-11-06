@@ -3,13 +3,20 @@ import morgan from "morgan";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import indexRoutes from "./routes/index.js";
-
+import session from "express-session";
 import { config } from "dotenv";
 config();
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    resave: false, // don't save session if unmodified
+    saveUninitialized: false, // don't create session until something stored
+    secret: "shhhh, very secret",
+  })
+);
 
 app.set("port", process.env.PORT || 3000);
 

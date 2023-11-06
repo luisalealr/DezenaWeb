@@ -10,7 +10,7 @@
             background: white;
         }
         .bg{
-            background-image: url(img/newLogo.PNG);
+            background-image: url(recursos/newLogo.PNG);
             background-position: center center;
             margin-left: 50px;
         }
@@ -32,20 +32,21 @@
 
                 <!-- LOGIN-->
 
-                <form action="#">
+                <form action="./loginAdmin" method="post">
                     <div class="mb-4">
-                        <label for="email" class="form-label">Correo Electronico</label>
-                        <input type="email" class="form-control" name="email">
+                        <label for="correo" id="correo" class="form-label">Correo Electronico</label>
+                        <input type="email" class="form-control" name="correo">
                     </div>
                     <div class="mb-4">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="password">
+                        <label for="contrasena" id="contrasena" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="contrasena">
                     </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                         </div>
                         <div class="my-3">
-                            <span>¿Eres vendedor? <a href="loginVendedor.ejs">Iniciar Sesión vendedor</a></span><br>
+                            <span>¿Eres vendedor? <a href="/loginVendedor">Iniciar Sesión vendedor</a></span><br>
+                            <span><a href="/registro">Regístrate</a></span><br>
                             <span><a href="#">Recuperar contraseña</a></span>
                         </div>
                 </form>
