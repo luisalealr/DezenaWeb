@@ -8,7 +8,7 @@ const VendedorController = {
   async getAllVendedores(req, res) {
     try {
       const vendedores = await Vendedor.findAll();
-      return res.json(vendedores);
+      return res.render("registrarVenta", {vendedores});
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

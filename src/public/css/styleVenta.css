@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;    
 }
 
 h1 {
@@ -26,7 +26,7 @@ input[type="date"] {
     border-radius: 4px;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 560px) {
     .form1 {
         display: flex;
         flex-direction: column;
@@ -52,7 +52,7 @@ input[type="date"] {
 }
 
 .btn {
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
     font-size: 1.5em;
     padding: 10px 20px;
@@ -69,7 +69,7 @@ input[type="date"] {
     width: 50%;
     margin: 0;
     padding: 20px;
-    float: right;
+    float: left;
 }
 
 .form2 div {
@@ -79,7 +79,7 @@ input[type="date"] {
 label {
     display: block;
     width: 100%;
-    text-align: right;
+    text-align: left;
     margin-bottom: 5px;
 }
 
