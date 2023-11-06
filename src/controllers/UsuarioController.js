@@ -25,7 +25,7 @@ const UsuarioController = {
       });
 
       if (usuario.contrasena == contrasena) {
-        return res.render("administrador");
+        return res.redirect("/administrador");
       } else {
         return res.render("loginAdmin");
       }

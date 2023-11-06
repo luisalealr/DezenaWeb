@@ -47,7 +47,7 @@
     <div class="todo">
       <div class="dentro">
         <div class="titulo">
-          <h1>GABRIELLE</h1>
+          <h1><%= producto.nombre %></h1>
           <hr />
         </div>
         <div class="columna">
@@ -78,15 +78,13 @@
                 <td>CUCUTA</td>
                 <td>SI</td>
               </tr>
-              <!-- Agrega más filas según sea necesario -->
             </table>
           </div>
         </div>
         <div class="descripcionP">
           <h3>DESCRIPCION</h3>
           <p>
-            Producto atemporal y disponible encuero gamuzado de calidad suprema.
-            Bolso pequeño de tamaño perfecto de mano.
+            <%= producto.descripcion %>
           </p>
         </div>
       </div>
