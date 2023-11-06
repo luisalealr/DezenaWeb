@@ -25,6 +25,8 @@ router.get('/productosOutlet', (req, res) => {
 router.get('/productosNovedades', (req, res) => {
   res.render("productosNovedades");
 });
+
+
 router.get("/loginAdmin",(req, res) => {
   res.render("loginAdmin");
 });
