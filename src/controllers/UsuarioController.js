@@ -1,8 +1,10 @@
 import sequelize from "../config/database.js";
-import administrador from "../models/administrador.js";
 import initModels from "../models/init-models.js";
+import crypto from "crypto";
 const models = initModels(sequelize);
 const Usuario = models.usuario;
+const Administrador = models.usuario;
+const Vendedor = models.vendedor;
 
 const UsuarioController = {
   // Obtener todos los usuarios
@@ -16,28 +18,60 @@ const UsuarioController = {
   },
 
   //Iniciar Sesión de un usuario
-  async getUsuarioByCorreo(req, res) {
-    const {correo, contrasena } = req.body; // se agarran el correo y contraseña del usuario
+  async getUsuarioByCorreoAdministrador(req, res) {
+    const { correo, contrasena } = req.body; // se agarran el correo y contraseña del usuario
 
     try {
       const usuario = await Usuario.findOne({
-        where: { correo: correo }
+        where: { correo: correo },
       });
-
-      if (usuario.contrasena == contrasena) {
+      const hash = crypto.createHash("sha256");
+      hash.update(contrasena);
+      const hashedPassword = hash.digest("hex");
+      const c = await Administrador.count({
+        where: { cedula: usuario.cedula },
+      });
+      if (c > 0 && hashedPassword == usuario.contrasena) {
+        req.session.usuario = usuario;
+        req.session.administrador = true;
         return res.redirect("/administrador");
       } else {
         return res.render("loginAdmin");
       }
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      return res.render("loginAdmin");
+    }
+  },
+
+  async getUsuarioByCorreoVendedor(req, res) {
+    const { correo, contrasena } = req.body; // se agarran el correo y contraseña del usuario
+
+    try {
+      const usuario = await Usuario.findOne({
+        where: { correo: correo },
+      });
+      const hash = crypto.createHash("sha256");
+      hash.update(contrasena);
+      const hashedPassword = hash.digest("hex");
+      const c = await Vendedor.count({
+        where: { cedula: usuario.cedula },
+      });
+      if (c > 0 && hashedPassword == usuario.contrasena) {
+        req.session.usuario = usuario;
+        req.session.vendedor = true;
+        return res.redirect("/vendedor");
+      } else {
+        return res.render("loginVendedor");
+      }
+    } catch (error) {
+      return res.render("loginAdmin");
     }
   },
 
   //Crear un usuario para el login
 
   async createUsuarioLogin(req, res) {
-    const { correo,contrasena } = req.body;
+    const { correo, contrasena } = req.body;
 
     try {
       const newUsuario = await Usuario.create({
