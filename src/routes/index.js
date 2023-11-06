@@ -22,6 +22,10 @@ router.get("/registro",(req, res) => {
   res.render("registro");
 });
 
+router.get("/ventanaPrincipal",(req, res) => {
+  res.render("ventanaPrincipal");
+});
+
 router.post("/loginAdmin",UsuarioController.getUsuarioByCorreo);
 router.post("/registro",UsuarioController.createUsuarioLogin);
 
