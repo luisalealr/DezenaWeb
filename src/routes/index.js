@@ -1,6 +1,6 @@
 import { Router } from "express";
 import vendedorRouter from "./vendedor.js";
-import productoRouter from "./productos.js";
+import productoRouter from "./producto.js";
 import administradorRouter from "./administrador.js";
 import UsuarioController from "../controllers/UsuarioController.js";
 const router = Router();
@@ -28,6 +28,5 @@ router.get("/ventanaPrincipal",(req, res) => {
 
 router.post("/loginAdmin",UsuarioController.getUsuarioByCorreo);
 router.post("/registro",UsuarioController.createUsuarioLogin);
-
 
 export default router;
