@@ -2,6 +2,7 @@ import { Router } from "express";
 import ProductoSolicitadoController from "../controllers/Producto_SolicitadoController.js";
 import TallerController from "../controllers/TallerController.js";
 import OrdenSolicitudController from "../controllers/Orden_SolicitudController.js";
+import ColorController from "../controllers/ColorController.js";
 
 const router = Router();
 

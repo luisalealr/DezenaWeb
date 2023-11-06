@@ -2,6 +2,7 @@ import sequelize from "../config/database.js";
 import initModels from "../models/init-models.js";
 const models = initModels(sequelize);
 const Producto = models.producto;
+const Color = models.color;
 
 const ProductoController = {
   // Obtener todos los productos
@@ -22,18 +23,30 @@ const ProductoController = {
       descripcion,
       precio_mercado,
       costo_produccion,
+      color,
     } = req.body;
 
     try {
       const newProducto = await Producto.create({
-        referencia,
-        nombre,
-        descripcion,
-        precio_mercado,
-        costo_produccion,
+        referencia: referencia,
+        nombre: nombre,
+        descripcion: descripcion,
+        precio_mercado: precio_mercado,
+        costo_produccion: costo_produccion,
       });
+      const newColor = await Color.findCreateFind({
+        color: color,
+      });
+      return res.render("crearReferencia", { estado: "Guardado exitosamente" });
+    } catch (error) {
+      return res.render("crearReferencia", { estado: "Algo falló" });
+    }
+  },
 
-      return res.status(201).json(newProducto);
+  async getVista(req, res) {
+    try {
+      const colores = await Color.findAll();
+      return res.render("crearReferencia", { colores });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -47,7 +60,7 @@ const ProductoController = {
       const producto = await Producto.findByPk(referencia);
 
       if (producto) {
-        return res.json(producto);
+        return res.render("verProducto", {producto});
       } else {
         return res.status(404).json({ message: "Producto no encontrado" });
       }

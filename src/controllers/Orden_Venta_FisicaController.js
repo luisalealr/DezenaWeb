@@ -1,7 +1,10 @@
 import sequelize from "../config/database.js";
 import initModels from "../models/init-models.js";
 const models = initModels(sequelize);
-const ordenVentaFisica = models.orden_venta_fisica;
+const OrdenVentaFisica = models.orden_venta_fisica;
+const Cliente = models.cliente;
+const Vendedor = models.vendedor;
+const Inventario_local = models.inventario_local;
 
 const OrdenVentaFisicaController = {
   // Obtener todas las órdenes de venta física
@@ -14,14 +17,74 @@ const OrdenVentaFisicaController = {
     }
   },
 
+  //Obtener vendedores, colores y productos
+  async getColorVendedorProducto(req, res){
+    try {
+      const vendedores = await Vendedor.findAll();
+      const inventarioLocalData = await Inventario_local.findAll({
+        attributes: ['producto_casa_matriz_color_IDcolor', 'producto_casa_matriz_producto_referencia'],
+      });
+      const colores = inventarioLocalData.map((item) => item.producto_casa_matriz_color_IDcolor);
+      const productos = inventarioLocalData.map((item) => item.producto_casa_matriz_producto_referencia);
+      return res.render("registrarVenta", {vendedores, productos, colores});
+    } catch (error) {
+      return res.status(500).json({ error: error.message });  
+    }
+  },
+
+  // Registrar orden de venta
+  async createOrdenDeVenta(req, res) {
+    try {
+      const { identificacion, fecha, productos, montoTotal, moneda, cedulaVendedor } = req.body;
+
+      // Verifica si el cliente ya existe en la base de datos
+      let cliente = await Cliente.findOne({ where: {identificacion } });
+
+      // Si el cliente no existe, créalo
+      //llamar al metodo del controller
+      if (!cliente) {
+        cliente = await Cliente.create({
+          cedula: identificacion,
+          nombre: req.body.nombres,
+          apellidos: req.body.apellidos,
+          email: req.body.email,
+          telefono: req.body.telefono,
+        });
+      }
+
+      // Crea la orden de venta
+      const ordenVenta = await OrdenVentaFisica.create({
+        fecha: fecha,
+        montoTotal: montoTotal,
+        moneda: moneda,
+        cedulaCliente: cliente.cedula,
+        cedulaVendedor: cedulaVendedor,
+      });
+
+      // Registra los productos y sus cantidades en la tabla ProductoVenta
+      for (const producto of productos) {
+        await ProductoVenta.create({
+          idOrdenVenta: ordenVenta.id,
+          idProducto: producto.id,
+          cantidad: producto.cantidad,
+        });
+      }
+
+      return res.status(201).json({ mensaje: 'Orden de venta creada con éxito' });
+    } catch (error) {
+      console.error('Error al crear la orden de venta:', error);
+      return res.status(500).json({ mensaje: 'Error al crear la orden de venta' });
+    }
+  },
+
   // Crear una nueva orden de venta física
   async createOrdenVentaFisica(req, res) {
     const { fecha, vendedor_cedula, cliente_cedula } = req.body;
     try {
       const newOrdenVentaFisica = await OrdenVentaFisica.create({
-        fecha,
-        vendedor_cedula,
-        cliente_cedula,
+        fecha: fecha,
+        vendedor_cedula: vendedor_cedula,
+        cliente_cedula: cliente_cedula,
       });
       return res.status(201).json(newOrdenVentaFisica);
     } catch (error) {
