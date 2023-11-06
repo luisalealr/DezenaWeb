@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Administrador</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/cuerpo.css" />
+</head>
+
+<body>
+    <%- include('./header_admin.ejs') %>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="opaque-background">
+                        <form action="./" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="referencia">Referencia</label>
+                                    <input type="text" class="form-control" id="referencia" name="referencia"
+                                    placeholder="Ingrese la referencia"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="cantidad">Cantidad</label>
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad"
+                                    placeholder="Ingrese la cantidad"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="satelite">Satélite</label>
+                                    <select class="opcion" id="opciones" name="opciones">
+                                    <% if (talleres) { %> 
+                                        <% talleres.forEach(function(taller) { %>
+                                        <option class="opcion" value="<%=taller.id%>" ><%= taller.nombre %></option>
+                                    <% }); %> 
+                                    <% } %>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="satelite">Color</label>
+                                    <select class="opcion" id="opciones" name="opciones">
+                                    <% if (colores) { %> 
+                                        <% colores.forEach(function(color) { %>
+                                        <option class="opcion" value="<%=color.id%>" ><%= color.nombre %></option>
+                                    <% }); %> 
+                                    <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="contenedor-boton">
+                            <button type="button" class="btn btn-secondary">Solicitar Producto</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>

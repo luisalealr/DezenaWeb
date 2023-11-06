@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Administrador</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="shortcut icon" href="/recursos/icono.png" />
+    <style>
+      .navbar {
+        border-bottom: 2px solid #000;
+      }
+      .navbar-light .navbar-nav .nav-link {
+        font-weight: bold;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/administradorNavbar') %>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Solicitudes pendientes</h3>
+          <!-- Recuadro con lista y checkboxes -->
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group">
+                <% if (ordenes) { %> <% ordenes.forEach(function(orden) { %>
+                <li class="list-group-item">
+                  <form
+                    id="form<%= orden.ID %>"
+                    action="/orden_solicitud/update"
+                    method="POST"
+                  >
+                    <label for="estado" style="display: none"></label>
+                    <input
+                      type="text"
+                      id="estado"
+                      name="estado"
+                      value="RECIBIDO"
+                      style="display: none"
+                    />
+                    <label for="checkbox<%= orden.ID %>">
+                      <input type="checkbox" value="item" />
+                      Solicitud #<%= orden.ID %> - <%= orden.fecha %> - Pedido
+                      a: <%= orden.nombre_taller %>
+                    </label>
+                    <input
+                      type="checkbox<%= orden.ID %>"
+                      id="checkbox<%= orden.ID %>"
+                      onclick="mostrarConfirmacion('orden.ID')"
+                    />
+                    <button
+                      id="button<%= orden.ID %>"
+                      type="submit"
+                      style="display: none"
+                    ></button>
+                  </form>
+                </li>
+                <% }); %> <% } %>
+
+                <li class="list-group-item">
+                  <label>
+                    <input type="checkbox" value="item2" />
+                    Item 2
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Historial de Solicitudes</h3>
+          <!-- Tabla -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Producto</th>
+                <th>Color</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (productos_solicitados) { %> <%
+              productos_solicitados.forEach(function(producto_solicitado) { %>
+              <tr>
+                <td><%= producto_solicitado.orden_solicitud_id %></td>
+                <td><%= producto_solicitado.nombre_producto %></td>
+                <td><%= producto_solicitado.nombre_color %></td>
+                <td><%= producto_solicitado.cantidad_solicitada %></td>
+                <td><%= producto_solicitado.fecha %></td>
+                <td><%= producto_solicitado.estado %></td>
+              </tr>
+              <% }); %> <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="/js/scriptOrdenSolicitud.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Crear Referencia</title>
+    <link rel="icon" href="./img/icono.jpeg" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./recursos/icono.png" />
+  </head>
+
+  <body class="baseReferencia">
+    <%- include('./header_admin.ejs') %>
+    <div class="base2">
+      <div class="base">
+        <div class="derecha">
+          <label for="referencia">Referencia</label>
+          <input type="text" id="referencia" name="referencia" />
+          <label for="color">Color</label>
+          <input type="text" id="color" name="color" />
+          <label for="descripcionP">Descripcion del producto</label>
+          <input
+            class="descripcion"
+            type="text"
+            id="descripcionProducto"
+            name="descripcion"
+          />
+        </div>
+        <div class="izquierda">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" />
+          <label for="precioM">Precio Mercado</label>
+          <input type="text" id="precioMercado" name="precio" />
+          <label for="costoP">Costo produccion</label>
+          <input type="text" id="costoProduccion" name="costo" />
+          <a href="#"><button>Agregar Referencia</button></a>
+          <!-- proponer la alerta de js que use en web -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

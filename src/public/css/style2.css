@@ -1,0 +1,47 @@
+.inicio {
+    display: flex;
+    padding: 3%;
+    padding-top: 7%;
+    padding-left: 10%;
+    align-items: center;
+}
+
+.inicio img {
+    width: 90%;
+    max-width: 500px;
+    padding: 5%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.botones {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    gap: 30px;
+    padding: 5% 0;
+}
+
+.botones button {
+    width: 100%;
+    height: 60px;
+    background-color: red;
+    color: #ffffff;
+    font-size: 20px;
+    height: auto;
+}
+
+.botones button:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+/* Consulta de medios para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .botones {
+        gap: 20px;
+        /* Reducir aún más el espacio entre los botones en dispositivos muy pequeños */
+    }
+}
